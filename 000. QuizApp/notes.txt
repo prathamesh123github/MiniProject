@@ -1,0 +1,147 @@
+Who invented java Programming ?
+a) Gudio Van Rossum b) James Gosling  c) Dennis Ritchie  d) Bjarne Stroustrup
+
+Which component is used to compile, debug & execute the java programs ?
+a) JRE b)JIT c) JDK d)JVM
+
+Which of the following is a super class of everyclass in java ?
+a) ArrayList b)Abstract class c) Object class  d)String
+
+Which of these keywords are used for the block to be examined for exceptions ?
+a) check  b) throw  c) catch  d)try
+
+Which one of the following is not an access modifier ?
+a) protected  b) void  c)public  d) private
+
+When does method overloading is determined ?
+a) finalize b) delete c) class  d)constructor
+
+Which of the following is a method having same name as that of its class ?
+a) finalize b) delete c) class d) constructor
+
+Which of these return type of hasNext() method of an iterator ? 
+a) Integer b) Double c)Boolean d) Collections object
+
+Which of these method of class String is used to compare two String objects for their equality ?
+a) equals() b) Equals()  c) isequal() d) isequals()
+
+Which of these class extend InputStream class?
+a) ObjectStream b) ObjectOutput c)ObjectInputStream d) ObjectInput
+
+
+package com.quizapp;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class InsertStudentInfo {
+	
+	Connection connection = null;
+	PreparedStatement ps= null;
+	
+	private void insertstudentinfo(String name, int marks, String grade) throws SQLException {
+		try {
+			ConnectionTest ct = new ConnectionTest();
+			connection=ct.getConnectionDetails();
+			
+			ps=connection.prepareStatement("insert into studentinfo(name,marks,grade)values(?,?,?)");
+			ps.setString(1, name);
+			ps.setInt(2, marks);
+			ps.setString(3, grade);
+			
+			int i =ps.executeUpdate();
+			System.out.println("Record is inserted succesfully..." +i);
+			
+		    }
+		catch(Exception e) {
+			System.out.println(e);
+			}
+		finally {
+			connection.close();
+			ps.close();
+		}
+	}
+	private void insertquestioninfo(String question) throws SQLException {
+		try {
+			ConnectionTest ct = new ConnectionTest();
+			connection=ct.getConnectionDetails();
+			
+			ps=connection.prepareStatement("insert into questioninfo(question)values(?)");
+			ps.setString(1, question);
+			
+			Quiz qz= new Quiz();
+		     Scanner sc = new Scanner(System.in);
+		     
+		     for(int i=0; i<=5; i++) {
+			   
+			System.out.println("Enter name>> ");
+			String name=sc.next();
+			
+			qz.logic();
+			
+			System.out.println("Enter marks>> ");
+			int marks=sc.nextInt();
+			
+		     System.out.println("Enter Grade>>");
+		     String grade=sc.next();
+		  
+			InsertStudentInfo userinput=new InsertStudentInfo();
+			userinput.insertstudentinfo(name,marks,grade);
+		}
+			
+			int i =ps.executeUpdate();
+			System.out.println("Record is inserted succesfully..." +i);
+			
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			}
+		finally {
+			connection.close();
+			ps.close();
+		}
+	}
+	public static void main(String[] args) throws SQLException {
+		
+		     Quiz qz= new Quiz();
+		     Scanner sc = new Scanner(System.in);
+		     
+		     
+		    for(int i=0; i<=5; i++) {
+			   
+			System.out.println("Enter name>> ");
+			String name=sc.next();
+			
+			qz.logic();
+			
+			System.out.println("Enter marks>> ");
+			int marks=sc.nextInt();
+			
+		     System.out.println("Enter Grade>>");
+		     String grade=sc.next();
+		  
+			InsertStudentInfo userinput=new InsertStudentInfo();
+			userinput.insertstudentinfo(name,marks,grade);
+		}
+		sc.close();
+	}
+
+}
+
+
+	String q1= "Who invented java Programming ?";
+	String q2= "Which component is used to compile, debug & execute the java programs ?";
+	String q3= "Which of the following is a super class of everyclass in java ?";
+	String q4= "Which of these keywords are used for the block to be examined for exceptions ?";
+	String q5= "Which one of the following is not an access modifier ?";
+	String q6= "When does method overloading is determined ?";
+	String q7= "Which of the following is a method having same name as that of its class ?";
+	String q8= "Which of these return type of hasNext() method of an iterator ?";
+	String q9= "Which of these method of class String is used to compare two String objects for their equality ?";
+	String q10= "Which of these class extend InputStream class?";
+
+
